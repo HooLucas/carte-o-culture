@@ -14,7 +14,7 @@ Projet effectué durant les années de Master MIAGE à Paris Nanterre.
 
 ## Auteurs
 
-* **Toine VINTEL** - [@Roofne](lien)
+* **Toine VINTEL** - [@Roofne](https://github.com/Roofne)
 * **Yohann SIMO** - [@SimoYo](lien)
 * **Lucas HO** - [@](lien)
 * **Jylan PAYET** - [@](lien)
