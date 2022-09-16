@@ -16,5 +16,5 @@ Projet effectué durant les années de Master MIAGE à Paris Nanterre.
 
 * **Toine VINTEL** - [Github](https://github.com/Roofne)
 * **Yohann SIMO** - [Github](lien)
-* **Lucas HO** - [Github](lien)
+* **Lucas HO** - [Github](https://github.com/HooLucas)
 * **Jylan PAYET** - [Github](https://github.com/jylanpayet)
