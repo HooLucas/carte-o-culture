@@ -14,5 +14,7 @@ Projet effectué durant les années de Master MIAGE à Paris Nanterre.
 
 ## Auteurs
 
-- @Roofne
-- @SimoYo
+* **Toine VINTEL** - [@Roofne](lien)
+* **Yohann SIMO** - [@SimoYo](lien)
+* **Lucas HO** - [@](lien)
+* **Jylan PAYET** - [@](lien)
