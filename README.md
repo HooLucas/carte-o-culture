@@ -13,17 +13,17 @@
 
 Projet effectué durant les années de Master MIAGE à Paris Nanterre.
 
-## Instalation
+## Installation
 
 ### Prérequis
 
 ### Démarrage
 
-### Page d'instalation
+### Page d'installation
 
 ## Auteurs
 
 * **Toine VINTEL** - [Github](https://github.com/Roofne) - [LinkedIn]()
-* **Yohann SIMO** - [Github](lien) - [LinkedIn]()
+* **Yohann SIMO** - [Github](https://github.com/SimoYo) - [LinkedIn]()
 * **Lucas HO** - [Github](https://github.com/HooLucas) - [LinkedIn]()
 * **Jylan PAYET** - [Github](https://github.com/jylanpayet) - [LinkedIn]()
