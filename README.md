@@ -28,7 +28,7 @@
   <summary>Table des matières</summary>
   <ol>
     <li>
-      <a href="projet">À propos du projet</a>
+      <a href="#projet">À propos du projet</a>
       <ul>
         <li><a href="#langages-et-outils">Langages et outils utilisés</a></li>
       </ul>
