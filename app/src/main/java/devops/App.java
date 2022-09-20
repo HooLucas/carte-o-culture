@@ -10,5 +10,9 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        livre test=new livre("les fleurs du mal","Baudelaire");
+        System.out.println(test.getAuteur());
+        System.out.println(test.getTitre());
+
     }
 }
