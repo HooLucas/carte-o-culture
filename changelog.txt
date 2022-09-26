@@ -1,0 +1,3 @@
+-- Version 0.1
+- Verification compilation et execution
+- Initialisation repository projet
