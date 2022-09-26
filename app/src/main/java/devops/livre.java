@@ -9,10 +9,11 @@ public class livre extends oeuvre {
         this.auteur="";
     }
 
-    public livre(String auteur){
-        super();
+    public livre(String titre, String auteur){
+        super(titre);
         this.auteur=auteur;
     }
+    
 
     public String getAuteur()
     {

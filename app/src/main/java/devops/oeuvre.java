@@ -8,6 +8,11 @@ public class oeuvre {
         this.titre="JE SUIS UNE OEUVRE";
     }
 
+    public oeuvre(String titre)
+    {
+        this.titre=titre;
+    }
+
     public String getTitre()
     {
         return this.titre;
