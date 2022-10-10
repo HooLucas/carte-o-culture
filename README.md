@@ -56,6 +56,11 @@ Vous aurez besoin d'avoir sur votre machine :
 
 ### <div id="demarrage"><ins>Démarrage</ins></div>
 
+gradle
+gradle task bootRun
+
+Ouvrir la page http://127.0.0.1:8080/map.html sur votre navigateur
+
 ## <div id="auteurs">Auteurs</div>
 
 * **Toine VINTEL** - [@Roofne](https://github.com/Roofne) 
