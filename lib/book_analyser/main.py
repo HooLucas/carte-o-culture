@@ -1,16 +1,24 @@
-# Défnition des librairies
-import ebooklib
-from ebooklib import epub
-from bs4 import BeautifulSoup
-import json
-import re
-import unicodedata
+#############################
+# DEFINITION DES LIBRAIRIES #
+#############################
 
-# Définition des fonctions 
+import ebooklib                 # Librairie pour manipuler des fichiers epub
+from ebooklib import epub       # Classe pour acceuillir les données d'un fichier epub
+from bs4 import BeautifulSoup   # Librairie pour extraire des infos de contenu HTML
+import json                     # Librairie pour manipuler des fichiers json
+import re                       # Librairie pour utiliser des expressions régulières (regex)
+import unittest                 # Librairie pour effectuer des tests
+
+#############################
+# DEFINITION DES FONCTIONS  #
+#############################
+
+# Charge un ebook
 def load_book(file_name):
-    book = epub.read_epub("./lib/book_analyser/book/"+file_name)
+    book = epub.read_epub("./book/"+file_name)
     return book
 
+# Recupère le texte brut d'un ebook
 def get_text(b):
     chapters = list(b.get_items_of_type(ebooklib.ITEM_DOCUMENT))
     texts = []
@@ -23,67 +31,68 @@ def get_text(b):
         text = text.replace("\xa0",' ')
         #text = text.replace("-",' ')  impossible Aix-en-provence
         text = re.sub('\[.[0-9]{0,4}\]', '', text)
-        text = text.replace(".",'')
-        text = text.replace("…",'')
-        text = text.replace(",",'')
-        texts.append(text)
-    #texts = ' '.join(texts)
-    #texts = texts.replace('\n', ' ')
-    #texts = texts.replace('\u00e8', 'è')   
+        text = text.replace(".",'').replace("…",'').replace(",",'')
+        texts.append(text)  
     texts = ' '.join(texts)
     return texts
 
-def get_lieux(b):
-    return "1"
-
-def create_book_data(b):
-    book = {
-        'name'   : b.get_metadata('DC', 'title')[0][0],
-        'author' : b.get_metadata('DC', 'creator')[0][0],
-        'pages'  : get_text(b),
-        'lieux'  : get_lieux(b)
-    }
-    return book
-
-def detect_lieu(data):
+# Identifie les lieux cité dans le livre
+def get_lieu(data):
     # un nom de lieu est débutté par une maj sur chaque partie ? Aix-en-Provence
-    # stat
-    # detection maj : 8300 result
-    # detection maj suivie d'une minuscule : 7400
-    # enlever double : 1838
-    # nettoyer encoding : 1597
-    # enlever mot commun : 966 si mot minuscule existe alors enlever ? Paris/paris 
-    # enlever nom : https://www.back4app.com/database/back4app/list-of-names-dataset
     lieu = []
-    for m in data['pages'].split(' '):
+    for m in data.split(' '):
         if re.search('^[A-Z][a-z]', m):
             lieu.append(m)
     lieu = list(dict.fromkeys(lieu))
     lieu.sort()
-    d = data['pages'].split(' ')
+    d = data.split(' ')
     i = 0
     while i < len(lieu):
         if lieu[i].lower() in d:
             lieu.pop(i)
             i=i-1
         i=i+1
-    #print(lieu[0:200])
-    #print(len(lieu))
+    return lieu
 
+# Créé une structure de donnée contenant les informations d'un livre
+def create_book_data(b):
+    text = get_text(b)
+    book = {
+        'name'   : b.get_metadata('DC', 'title')[0][0],
+        'author' : b.get_metadata('DC', 'creator')[0][0],
+        'pages'  : text,
+        'lieux'  : get_lieu(text)
+    }
+    return book
+
+# Exporte une structure de donnée dans un fichier json
+def export_data(data):
+    with open("./book/data.json", "w") as write_file:
+        json.dump(data, write_file)
+
+#############################
+#     PARTIE PRINCIPALE     #
+#############################
 
 b1 = load_book("fantine.epub")
 d1 = create_book_data(b1)
-detect_lieu(d1)
-
-b2 = load_book("manon-lescaut.epub")
-d2 = create_book_data(b2)
-detect_lieu(d2)
-
+print(d1['lieux'][0:200])
 data = d1
+export_data(data)
 
-with open("./lib/book_analyser/book/data.json", "w") as write_file:
-   json.dump(data, write_file)
+#############################
+#           TESTS           #
+#############################
 
-# Références
+class TestStringMethods(unittest.TestCase):
+
+    def test_is_not_lieux(self):
+        self.assertTrue('Le'.lower(), 'le')
+
+#############################
+#         REFERENCES        #
+#############################
+
 # https://andrew-muller.medium.com/getting-text-from-epub-files-in-python-fbfe5df5c2da
 # http://docs.sourcefabric.org/projects/ebooklib/en/latest/tutorial.html#reading-epub
+# https://www.back4app.com/database/back4app/list-of-names-dataset
