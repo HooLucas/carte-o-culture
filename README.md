@@ -1,6 +1,6 @@
 # Projet-DevOps
 
-[![Build Status](https://img.shields.io/travis/com//Carte-O-Culture/master)](https://travis-ci.com/github//Carte-O-Culture)
+[![Build Status](https://img.shields.io/travis/com/jylanpayet/Carte-O-Culture/master)](https://travis-ci.com/github/jylanpayet/Carte-O-Culture)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/jylanpayet/Projet-DevOps)
 [![License](https://img.shields.io/github/license/jylanpayet/Projet-DevOps.svg?style=flat-square)](LICENSE)
 
