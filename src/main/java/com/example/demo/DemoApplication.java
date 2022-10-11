@@ -18,6 +18,10 @@ public class DemoApplication {
 
 	@RequestMapping(value="html", method = RequestMethod.GET )
 	public String map() {
+        livre test=new livre("les fleurs du mal","Baudelaire");
+        String info = test.getTitre();
+		System.out.println(info);
+		System.out.println("<h1>Test<h1>");
 		return "map.html";
 	}
 }
