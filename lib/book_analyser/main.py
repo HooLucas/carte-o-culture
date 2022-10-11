@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup   # Librairie pour extraire des infos de contenu H
 import json                     # Librairie pour manipuler des fichiers json
 import re                       # Librairie pour utiliser des expressions régulières (regex)
 import unittest                 # Librairie pour effectuer des tests
+import os                       # Librairie pour manipuler les chemin d'accès
 
 #############################
 # DEFINITION DES FONCTIONS  #
@@ -67,17 +68,20 @@ def create_book_data(b):
 
 # Exporte une structure de donnée dans un fichier json
 def export_data(data):
-    with open("./book/data.json", "w") as write_file:
+    with open("data.json", "w") as write_file:
         json.dump(data, write_file)
 
 #############################
 #     PARTIE PRINCIPALE     #
 #############################
 
-b1 = load_book("fantine.epub")
-d1 = create_book_data(b1)
-print(d1['lieux'][0:200])
-data = d1
+livres = os.listdir("./book/")
+data = []
+for l in livres:
+    b = load_book(l)
+    d = create_book_data(b)
+    data.append(d)
+    print(d['lieux'][0:100])
 export_data(data)
 
 #############################
