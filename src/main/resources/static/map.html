@@ -7,8 +7,15 @@
 </head>
 
 <body>
-    <h1>Demo Java GMAP</h1>
+    <h1>Carte-O-Culture</h1>
     <div th:fragment="shop_map">
+
+		<div id="search-block" class="search">
+			<form action="post">
+				<textarea name="" id="" cols="30" rows="10">choissisez un livre</textarea>
+				<button type="submit">Envoyer</button>
+			</form>
+		</div>
 
         <!--Élément Div pour afficher la carte-->
 		<div id="map"></div>
@@ -44,9 +51,36 @@
 </html>
 
 <style>
+	html, body {
+		background-color: grey;
+		height: 100%;
+	}
+
+	h1 {
+		text-align: center;
+		color : white;
+		font-size: 40px; 
+	}
+
+	#search-block {
+		margin: 2em;
+		padding: 1em;
+		height: 100px;
+	}
+
+	#search-block .button {
+		margin: auto
+	}
+
+	#search-block .text-area {
+		margin: auto;
+		height: 50px;
+	}
+
     #map {
+		margin: auto;
         height: 400px;
-        width: 600px;
+        width: 100%;
     }
 </style>
 
