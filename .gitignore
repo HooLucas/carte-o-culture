@@ -35,3 +35,4 @@ out/
 
 ### VS Code ###
 .vscode/
+lib/ville_data/dataset_geoname.json
