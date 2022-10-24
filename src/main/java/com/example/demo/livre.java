@@ -1,15 +1,15 @@
 package com.example.demo;
 
-public class livre extends oeuvre {
+public class Livre extends oeuvre {
     private String auteur;
 
-    public livre()
+    public Livre()
     {
         super();
         this.auteur="";
     }
 
-    public livre(String titre, String auteur){
+    public Livre(String titre, String auteur){
         super(titre);
         this.auteur=auteur;
     }

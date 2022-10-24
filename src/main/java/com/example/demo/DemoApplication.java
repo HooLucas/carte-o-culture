@@ -1,11 +1,10 @@
 package com.example.demo;
 
+import java.io.FileReader;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -16,12 +15,23 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@RequestMapping(value="html", method = RequestMethod.GET )
-	public String map() {
-        livre test=new livre("les fleurs du mal","Baudelaire");
-        String info = test.getTitre();
-		System.out.println(info);
-		System.out.println("<h1>Test<h1>");
-		return "map.html";
+    @GetMapping("/")
+	public String home() {
+		String home = "<h1> Projet Carte-O-Culture </h1><h2>Demo</h2><a href='map.html'>Lien Demo</a>";
+		return home;
 	}
+
+	@GetMapping("/map")
+    public String map(){
+		JSONArray a = (JSONArray) parser.parse(new FileReader("./lib/book_analyser/data.json"));
+
+		for (Object o : a) {
+		  JSONObject livre = (JSONObject) o;	  
+		  String nom    = (String) livre.get("name");	  
+		  String auteur = (String) livre.get("city");	  
+		  String lieux  = (String) livre.get("job");
+		}
+		Livre test = new Livre("les fleurs du mal","Baudelaire");
+        return "map";
+    }
 }

@@ -1,0 +1,55 @@
+html, body {
+    background-color: white;
+}
+
+.title {
+    color : black;
+}
+
+.title-page {
+    text-align: center;
+    font-size: 40px; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.box {
+    border: 0px solid black;
+    padding: 1em;
+}
+
+.box-horizontal {
+    display:flex;
+    flex-direction:row;
+    margin:0;
+}
+
+.box-vertical {
+    display:flex;
+    flex-direction:column;
+    margin:0;
+}
+
+.box-search {
+    background-color:rgb(145, 255, 180);
+    min-height: 100px;
+    max-height: 150px;
+    min-width: 400px;
+    display: block;
+    font-size: medium;
+}
+
+
+.box-info {
+    background-color:green;
+    min-height: 400px;
+    max-height: 600px;
+    width: 20%
+}
+
+.box-map {
+    background-color:red;
+    height: 400px;
+    width: 100%
+}
+
