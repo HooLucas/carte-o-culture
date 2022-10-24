@@ -34,11 +34,14 @@ html, body {
     background-color:rgb(145, 255, 180);
     min-height: 100px;
     max-height: 150px;
-    min-width: 400px;
+    z-index: 1;
     display: block;
     font-size: medium;
 }
 
+.box-search select {
+    font-size: medium;
+}
 
 .box-info {
     background-color:green;
@@ -53,3 +56,29 @@ html, body {
     width: 100%
 }
 
+@keyframes dezoom {
+    from {
+        width: 150px;
+        height: 150px;
+    } to {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+#logo {
+    display: flex;
+    justify-content:center;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#logo img {
+    animation-name: dezoom;
+    animation-duration: 2s;
+    margin: 5px;
+}
+
+footer {
+    text-align: center;    
+}

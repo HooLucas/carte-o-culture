@@ -9,18 +9,19 @@
 		<title>Carte-O-Culture</title>
 	</head>
 	<body>
-		<header>
+		<div class="title title-page" id="logo">
+			<span id="txt-left">Carte -</span>
+			<img id="logo-img" src="/img/loupe.jpg" alt="logo_loupe" width="75" height="75">
+			<span id="txt-right">- Culture</span>
 
-		</header>
-		<nav></nav>
-		<h1 class="title title-page">Carte-O-Culture</h1>
+		</div>
 		<div class="box box-search">
 			<!--filtre les points-->
-			<form action="post">
+			<form id="filter" action="post">
 				<select name="selector-book" id="selector-book">
-					<option value="">Manon Lescaut</option>
-					<option value="">Fantine</option>
 				</select>
+				<label><input type="checkbox" id="box_livre_1" onclick="toggle_marker(this,1)" />Manon Lescaut</label>
+				<label><input type="checkbox" id="box_livre_2" onclick="toggle_marker(this,2)" />Fantine</label> 
 				<!--<textarea name="" id="" cols="30" rows="1">choissisez un livre</textarea>-->
 				<button type="submit">Envoyer</button>
 			</form>
@@ -50,8 +51,8 @@
 			<!--Élément Div pour afficher la carte-->
 			<div class="box box-map" id="map"></div>
 			<script>
-				let map;
-				let markers;
+				var map;
+				var markers = [];
 
 				// Map functions
 				function create_map(div_name) {
@@ -64,21 +65,49 @@
 				}
 
 				// Marker functions
-				function add_marker(x, y, map) {
+				function add_marker(i, x, y, map) {
 					var LatLng = {lat: x, lng: y};
-					markers = new google.maps.Marker({position: LatLng});
-					markers.setMap(map);
+					markers[i] = new google.maps.Marker({position: LatLng});
+					markers[i].setMap(map);
+					markers[i].setVisible(true);
 				}
 
 				function initMap() {
 					create_map("map");
-					add_marker(50, 10, map);		
+					var livres = [
+						{"name":"Lescaut" , "auteur":"Doe"  , "lieux":[0,0]},
+						{"name":"Fantine" , "auteur":"Smith", "lieux":[0,0]},
+						{"name":"Germinal", "auteur":"Jones", "lieux":[0,0]}
+					];
+					var x = 0;
+					var y = 0;
+					const sel = document.getElementById("selector-book");			
+					for (let i = 0; i < livres.length; i++) {
+						x = Math.random()*10+40;
+						y = Math.random()*6+2;
+						add_marker(i,x, y, map);
+
+						const opt = document.createElement("option");
+						opt.value = "1";
+						opt.id = "box_livre_"+i;
+						opt.text = livres[i]["name"];
+						sel.add(opt, null);
+					}					
 				}
+
+				function toggle_marker(box,i) {
+					if (box.checked) {
+						markers[i].setVisible(true);
+					} else {
+						markers[i].setVisible(false);
+					}
+				}
+
 			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoBbN_BhqAdAJ1T4t3f09861MMwjBbJ6Q&callback=initMap" defer></script>
 		</div>
 		<footer>
-					
+			Projet DevOps Master 2022			
 		</footer>
 	</body>
 </html>
