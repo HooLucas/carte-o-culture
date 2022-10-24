@@ -25,6 +25,7 @@ for i in range(0, len(df)):
             }
             data.append(x)
 df_france = pd.DataFrame(data)
+df_france.to_csv('data_geo_france.csv')
 df_france.to_json('data_geo_france.json')
 
 #############################
