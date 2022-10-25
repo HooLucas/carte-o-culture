@@ -13,17 +13,13 @@
 			<span id="txt-left">Carte -</span>
 			<img id="logo-img" src="/img/loupe.jpg" alt="logo_loupe" width="75" height="75">
 			<span id="txt-right">- Culture</span>
-
 		</div>
-		<div class="box box-search">
+
+		<div id="box-filter" class="box box-search">
 			<!--filtre les points-->
 			<form id="filter" action="post">
-				<select name="selector-book" id="selector-book">
-				</select>
-				<label><input type="checkbox" id="box_livre_1" onclick="toggle_marker(this,1)" />Manon Lescaut</label>
-				<label><input type="checkbox" id="box_livre_2" onclick="toggle_marker(this,2)" />Fantine</label> 
+				<!--<select name="selector-book" id="selector-book"></select>-->
 				<!--<textarea name="" id="" cols="30" rows="1">choissisez un livre</textarea>-->
-				<button type="submit">Envoyer</button>
 			</form>
 		</div>
 		<div class="box box-horizontal">
@@ -65,41 +61,80 @@
 				}
 
 				// Marker functions
-				function add_marker(i, x, y, map) {
+				function create_marker(x, y, name, color, map) {
+					//x = Math.random()*10+40;
+					//y = Math.random()*6+2;
 					var LatLng = {lat: x, lng: y};
-					markers[i] = new google.maps.Marker({position: LatLng});
-					markers[i].setMap(map);
-					markers[i].setVisible(true);
+					console.log(color);
+					marker = new google.maps.Marker({
+						position: LatLng,
+						title: name,
+						icon: {url: "http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png"},
+					});
+					marker.setMap(map);
+					marker.setVisible(false);
+					return marker;
 				}
 
 				function initMap() {
 					create_map("map");
 					var livres = [
-						{"name":"Lescaut" , "auteur":"Doe"  , "lieux":[0,0]},
-						{"name":"Fantine" , "auteur":"Smith", "lieux":[0,0]},
-						{"name":"Germinal", "auteur":"Jones", "lieux":[0,0]}
+						{"name":"Manon Lescaut" , "auteur":"Doe"  , "lieux":[{"ville": "Chantilly", "x": 49.19461, "y": 2.47124}, {"ville": "Hesdin", "x": 50.37349, "y": 2.0382}, {"ville": "Jumi\u00e8ges", "x": 49.43324, "y": 0.81918}]},
+						{"name":"Les Misérables : Fantine" , "auteur":"Smith", "lieux":[{"ville": "Amiens", "x": 49.9, "y": 2.3}, {"ville": "Calais", "x": 50.95194, "y": 1.85635}]},
+						{"name":"Germinal", "auteur":"Jones", "lieux":[{"ville": "Saint-Michel", "x": 49.91952, "y": 4.13278}, {"ville": "Saint-Sulpice", "x": 49.35049, "y": 2.12314}, {"ville": "Versailles", "x": 48.80359, "y": 2.13424}]}
 					];
+
 					var x = 0;
 					var y = 0;
-					const sel = document.getElementById("selector-book");			
-					for (let i = 0; i < livres.length; i++) {
-						x = Math.random()*10+40;
-						y = Math.random()*6+2;
-						add_marker(i,x, y, map);
+					var filter = document.getElementById("box-filter");
+					var input;		
+					var marker;	
+					var colors = ["blue","red","yellow"]
+					//var pas = Math.ceil(255/livres.length);
+					//var decalage = 10;
+					//var color_r = 0; var color_g = 0; var color_b = 0; 
+					//color = color_r.toString(16)+color_g.toString(16)+color_b.toString(16);	
 
-						const opt = document.createElement("option");
-						opt.value = "1";
-						opt.id = "box_livre_"+i;
-						opt.text = livres[i]["name"];
-						sel.add(opt, null);
-					}					
+					for (let i=0; i < livres.length; i++) {
+						markers[i] = []
+						for(let j=0; j < livres[i]["lieux"].length; j++) {
+							x = livres[i]["lieux"][j]["x"];
+							y = livres[i]["lieux"][j]["y"];
+							name = livres[i]["lieux"][j]["name"];
+							marker = create_marker(x,y,name,colors[i],map);
+							markers[i].push(marker)
+						}
+						
+						input = document.createElement("input");
+						input.setAttribute('type', 'checkbox');
+						input.setAttribute("id", "box_livre_"+i);
+						input.setAttribute("class", "input input-livre"+i);
+						input.setAttribute('onclick',"toggle_marker(this,"+i+")");
+
+						label = document.createElement("label");
+						label.innerHTML = livres[i]["name"];  
+
+						div = document.createElement("div");
+						div.setAttribute("class", "div_input_livre");
+
+						label.appendChild(input);
+						div.appendChild(label);
+						filter.appendChild(div);					
+					}	
+					input = document.createElement("submit");
+					filter.appendChild(input);									
 				}
 
 				function toggle_marker(box,i) {
 					if (box.checked) {
-						markers[i].setVisible(true);
+						console.log(markers[i]);
+						for(let j=0; j < markers[i].length; j++) {
+							markers[i][j].setVisible(true);
+						}
 					} else {
-						markers[i].setVisible(false);
+						for(let j=0; j < markers[i].length; j++) {
+							markers[i][j].setVisible(false);
+						}
 					}
 				}
 
