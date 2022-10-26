@@ -1,0 +1,18 @@
+= Rapport prohet DevOps version 0.3
+:url-wolpertinger: https://en.wikipedia.org/wiki/rapport-projet-devops-v-0.3
+
+
+
+== Fonctionalités frontend
+
+En partant de l'user story, "En tant qu'utilisateur, je veux savoir quelles sont les lieux cités dans un livres",
+nous avons créé un script JS permettant de sélectionner un ou plusieurs livres et d'afficher des marqueurs correspondants.
+
+== Apparences
+
+Le style est important dans un site web et il était temps de le créér.
+L'idée du logo serait une animation pour attirer le regard de l'utilisateur
+
+
+
+Une autre idée serait de proposer une ancienne carte pour coller aux livres présenté qui ont été publiés vers le 17-18eme siècle

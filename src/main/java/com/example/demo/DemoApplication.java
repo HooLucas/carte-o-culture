@@ -23,16 +23,6 @@ public class DemoApplication {
 
 	@GetMapping("/map")
     public String map(){
-		/*
-		JSONArray a = (JSONArray) parser.parse(new FileReader("./lib/book_analyser/data.json"));
-
-		for (Object o : a) {
-		  JSONObject livre = (JSONObject) o;	  
-		  String nom    = (String) livre.get("name");	  
-		  String auteur = (String) livre.get("city");	  
-		  String lieux  = (String) livre.get("job");
-		}
-		*/
 		Livre test = new Livre("les fleurs du mal","Baudelaire");
         return "map";
     }
