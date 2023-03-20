@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html xlmns:th='http://www.thymeleaf.org'>
+    <head th:replace="page/page-head::copy"></head>
+    <body>
+        <div class="row" id="top">
+            <header th:replace="page/page-header::copy"></header>
+            <nav th:replace="page/page-nav::copy"></nav>
+        </div>
+        <div id="mid">
+
+<div class="box">
+    <div>
+        <div><h2>AJOUTER UN LIVRE</h2></div>
+        <div class="bar"></div>
+        <div>
+        <form method="post" th:action="@{/livres/add}" enctype="multipart/form-data">
+            <div class="form-group">
+                <h5>Ebook File</h5>
+                <input type="file" class="form-control" id="input-file" th:field="${ebook.file}">
+            </div>
+            <div>
+                <button>Envoyer</button>
+            </div>
+        </forms>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div id="bottom">
+        <footer th:replace="page/page-footer::copy"></footer>
+    </div>
+</body>
+</html> 

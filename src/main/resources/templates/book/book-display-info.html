@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html xlmns:th='http://www.thymeleaf.org'>
+<head th:replace="page/page-head::copy"></head>
+<body>
+    <div class="row" id="top">
+        <header th:replace="page/page-header::copy"></header>
+        <nav th:replace="page/page-nav::copy"></nav>
+    </div>
+    <div id="mid">
+
+<div th:fragment="copy" class="box">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 book-img d-flex justify-content-center">
+                <object data="/img/cover/0.jpg" type="image/jpg"><img th:attr="src='/img/cover/'+${livre.id_book}+'.jpg'"></object>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><h3>Titre</h3></td>
+                                <td><h3 id="titre" class="box-book-title"  th:text="${livre.title}"></h3></td>    
+                            </tr>
+                            <tr>
+                                <td><h4>Auteur</h4></td>
+                                <td><h4 id="auteur" class="box-book-author" th:text="${livre.author}"></h4></td>                
+                            </tr>
+                            <tr>
+                                <td>Editeur</td>
+                                <td>?</td>
+                            </tr>
+                            <tr>
+                                <td>Date Parution</td>
+                                <td>?</td>      
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td>?</td>    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <a th:href="'/livres/'+${livre.id_book}+'/read'" class="btn btn-primary">READ ME</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div id="bottom">
+        <footer th:replace="page/page-footer::copy"></footer>
+    </div>
+</body>
+</html> 

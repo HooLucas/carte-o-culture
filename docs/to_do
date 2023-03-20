@@ -1,0 +1,103 @@
+Avancés Projet = ? %
+
+- partie repo
+	- [x] creation repo github
+	- [x] gestionnaire de version
+	- [x] branch de dev + main branch + branche de version
+	- [x] tag de release
+	- [x] update readme 
+	- [x] intégration continue (Jenkin) + badge
+	- [ ] qualité de code + badge
+	- [x] rapports (ASCII Doctor)
+	- [ ] diagrammes
+		- [x] objets manipulés
+		- [x] sequence chargement de la map
+		- [ ] classe de la bdd
+	- [ ] maquette de front
+	- [ ] déploiment sur server distant
+		- [ ] achat nom de domaine
+		- [ ] location server
+		- [ ] transfert ftp
+	- [ ] securite mdp
+		- [ ] env (video)
+- frontend
+	- [x] séparer les style/script dans des fichiers
+	- [ ] template builder (data -> html)
+		- [x] utiliser les fragments de thymeleaf (https://www.baeldung.com/spring-thymeleaf-fragments)
+		- [ ] generer une "base" d'apparence et lui ajouter des sections
+	- [ ] map de visualisation des lieux
+		- [x] creation clé api
+		- [x] objet google map
+		- [x] ajout marqueurs
+		- [x] customization marqueurs (couleur, forme)
+		- [ ] couleurs de marqueurs dynamique (n marqueurs -> n couleurs différentes -> radian) 
+		- [ ] ajout carte bancaire
+	- [ ] vue mobile
+	- [ ] listing des lieux à gauche
+		- [ ] champ de recherche selon nom livre ou nom auteur
+	- [ ] listing livres
+		- [x] infos
+		- [x] flexbox
+		- [x] cover 
+		- [x] formulaire ajout de livre
+			- [x] ajout un livre
+			- [ ] notif sucess/error
+			- [ ] ajout plusieurs livres	
+		- [ ] formulaire recherche de livre
+	- [ ] système de connection
+		- [ ] système de crédential (api_key)
+		- [ ] authification Oauth
+- backend 
+	- [x] classe selon le diagramme
+	- [x] routing
+	- [x] chargement donnée depuis json
+	- [x] envoie donnée vers page render
+	- [ ] tests
+	- [x] charger les données depuis la database
+		- [x] script d'instalation et de migration
+		- [x] operation CRUD sur la BDD
+		- [x] requete autres pages vers l'API (top controller)
+		- [x] requete API vers autres pages
+		- [ ] verifier l'unicité des nuplet (1 livre par id)
+	- [ ] bug refresh image
+		- [ ] implementer un FileSystem 
+		- [ ] maj du classpath
+		https://stackoverflow.com/questions/68691761/how-to-serve-static-resources-at-runtime-with-spring-boot
+	- [ ] API
+		- [x] livre (auteur / infos)
+		- [x] lieux
+		- [ ] chapitres -> page
+			- [ ] sous api rataché a livre
+			- [x] extraire les numero de chapitres (1-chapitre-1)
+			- [x] extraitre les  pages du chapitre (1-chapitre-1-page-1)
+			- [ ] page liseuse
+			https://stackoverflow.com/questions/34294104/i-am-using-the-epublib-and-i-am-trying-to-get-the-entire-chapter-of-a-book-at-a
+- data
+	- [x] telecharger livres (100)
+ 	- [x] creer un fichier data_livre
+	- [x] detecter des noms de lieux
+	- [x] comparer ses noms avec des lieux réels
+	- [x] mettre en forme les noms des livres (auteur_serie_nom.epub)
+	- [x] migrer le code en python vers du java (ebook -> keylist)
+		- [x] chargement ebook
+		- [x] recuperer infos ebook
+		- [x] create/update data json 
+		- [x] detecter lieux
+	- [x] migrer le code java vers une BDD
+
+analyse de donnée :
+- texte
+- position geographique
+
+autres api 
+OpenStreetMap : https://www.openstreetmap.fr/
+Lombok
+
+syntaxte
+nom attribut/class en francaos
+nom method anglais
+
+sources :
+https://www.codejava.net/frameworks/spring-boot/spring-boot-restful-crud-api-examples-with-mysql-database
+https://www.bezkoder.com/spring-boot-image-upload-thymeleaf/
+https://discourse.julialang.org/t/how-to-submit-code-coverage-results-to-codecov-coveralls-via-gitlab-ci/25503/7

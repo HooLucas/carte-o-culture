@@ -1,0 +1,74 @@
+@startuml
+
+class Lieu{
+  -String : Nom
+}
+
+class Marqueur{
+  -String : date
+}
+
+Interface Oeuvre{
+  {method}getInfo(String)
+  {method}getLieu(Lieu)
+}
+
+class Film{
+  -String : Producteur
+  -Lieu : lieu_tournage
+}
+
+class Livre{
+  -Integer : id_l
+  -String : auteur
+  -Date : date_parution
+  -String : texte
+}
+
+class Auteur {
+  -Integer id_auteur
+  -String nom
+  -String prenom
+  -String biographie
+}
+
+class Chapitre {
+  Integer id_c
+  String name
+  String index
+}
+
+class Page {
+  Integer id_p
+  String texte
+}
+
+class Musique{
+  -String : Artiste
+}
+
+class Artiste{
+}
+
+class Festival{
+  -Artiste : artiste
+}
+class Carte{
+  -Marqueur : position
+}
+
+Oeuvre <|-- Festival 
+Artiste "1..*" o-- "1..*" Musique
+Festival "1..*" o-- "0..*" Artiste
+
+Oeuvre <|-- Livre
+Livre "1*" -- "1*" Auteur
+Livre "1..*" o-- "0..*" Chapitre
+Chapitre "1..*" o-- "0..*" Page
+
+Oeuvre <|-- Film
+
+Lieu "0..*"--"0..*" Oeuvre : se situe
+(Oeuvre,Lieu).Marqueur
+
+@enduml

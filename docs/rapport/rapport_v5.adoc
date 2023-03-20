@@ -1,0 +1,19 @@
+== Formulaire
+
+Le framework spring utilise des annotations pour gérer les formulaires.
+Tout d'abord on a utilisé la syntaxe de thymeleaf pour enrichir les formulaire HTML.
+On peut associer les setters d'un objet Java aux champs du formulaire juste en utilisant les noms des attributs.
+
+D'ou le diagramme de séquence 
+
+Par exemple pour le formulaire de l'ajout d'un nouveau livre.
+
+
+On obtient le code suivant :
+Coté front
+
+<img>
+
+Coté Back 
+
+<img>

@@ -1,0 +1,52 @@
+@startuml
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+component Carte-O-Culture {
+    component "BDD" #yellow {
+        [LivreTable]
+        [VilleTable]
+        [AuteurTable]
+        LivreTable - AuteurTable
+    }
+    component "Entity"  #orange {
+        [Livre]
+        [Carte]
+        [Marqueur]
+    }
+    component "Controller" #IndianRed {
+        [LivreController]
+        [EBookController]
+        [MainController]
+        [CarteController]
+
+        MainController --> LivreController
+        MainController --> CarteController
+    }
+
+    component "Client" #Red{
+        [Client1]
+    }
+
+    component "View" #MediumPurple {
+        [livre.html]
+        [carte.html]
+        [index.html]
+    }
+
+    [LivreTable] -> [Livre]
+    [VilleTable] -> [Marqueur]
+    [Marqueur] --o Carte
+
+    [Livre] --> [LivreController]
+    [Carte] --> [CarteController]
+    [EBookController] --> Livre
+
+    [Client1] --> [MainController]
+    [CarteController] --> [carte.html]
+    [LivreController] --> [livre.html]
+    [carte.html] --> [index.html]
+    [livre.html] --> [index.html]
+}
+@enduml

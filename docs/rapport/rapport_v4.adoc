@@ -1,0 +1,27 @@
+= Rapport projet DevOps version 0.4
+:url-wolpertinger: https://en.wikipedia.org/wiki/rapport-projet-devops-v-0.4
+
+== Mise à jour du script de detection de lieux
+
+Le script ne réécrit plus les nouvelles données sur les anciennes mais à la place met à jour les anciens 
+ou ajoute les nouveaux livres.
+Le texte du livre est divisé en chapitres et pages afin d'accélérer le futur affichage dans le front
+La fonction de mise à jour des données peut désormais prendre 0,1 ou n livres et mettre à jour les index correspondant.
+
+== Création des modèles
+
+A partir des pattern vus en cours, la décision de découpler les modèles de leur utilisation permettra une meilleure mise à jour du projet.
+Les requètes sont dans le dossier request/.
+Les modèles des classes dans le dossier models/.
+Les affichages des résultats dans le dossier templates/ àavec l'utilisation de la librairie Thymeleaf.
+
+
+== Ajout d'une base de donnée
+
+Face à la taille de plus en plus grande des données à charger dans le backend, nous avons décidé d'utiliser une base de données pour les stocker.
+Le module JDBC nous permet de nous y connecter et d'y éxécuter des requètes.
+La migration du back vers la BDD est en cours.
+
+
+
+

@@ -1,0 +1,73 @@
+body {
+    font-family:'Times New Roman'; 
+}
+
+.nav-link {
+    color:black;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+.bar {
+    border: 1px solid black;
+    margin: 0em;
+}
+
+.box {
+    border:2px solid black;
+    padding: 1em;
+    border-radius: 30px;
+}
+
+.container {
+    margin:auto;
+}
+
+.box-title {
+    text-align: center;
+} 
+
+.box-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-nav div {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.box-footer {
+    display: flex;
+    font-size: 1em;
+}
+
+.box-livres {
+    min-width: 1px;
+    min-height: 1px;
+    margin: 1em;
+}
+
+.box-book-map {
+    border: 1px solid black; 
+    min-width: 300px; 
+    height: 300px;
+    border-radius: 0px;
+}
+
+.box-horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px    
+}
+
+@media (max-width: 992px) {
+    .box-horizontal {  grid-template-columns: auto;}
+}   
+
+.box-vertical {
+    display:flex;
+    flex-direction:column;
+    margin:0;
+}

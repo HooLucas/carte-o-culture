@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html xlmns:th='http://www.thymeleaf.org'>
+    <head th:replace="page/page-head::copy"></head>
+    <body>
+        <div class="row" id="top">
+            <header th:replace="page/page-header::copy"></header>
+            <nav th:replace="page/page-nav::copy"></nav>
+        </div>
+        <div id="mid">
+        
+<div class="box">
+    <div class="row">
+        <div class="col-1">
+            <a th:each="chapter : ${livre.chapters}" class="btn btn-primary" th:text=${chapter.nom} data-toggle="collapse" th:href="'#'+${chapter.id_chapter}" role="button" aria-expanded="false" th:attr="aria-controls=${chapter.id_chapter}"></a>
+        </div>
+        <div class="col">
+            <div th:each="chapter : ${livre.chapters}" th:id="${chapter.id_chapter}">
+                <p th:each="page : ${chapter.pages}" th:text="${page.texte}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div id="bottom">
+            <footer th:replace="page/page-footer::copy"></footer>
+        </div>
+    </body>
+</html> 

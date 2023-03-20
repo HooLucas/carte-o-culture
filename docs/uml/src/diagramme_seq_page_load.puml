@@ -1,0 +1,21 @@
+@startuml
+
+activate Main    
+    Main -> Map : load()
+    activate Map
+        Map -> Livres : getLivres()
+        activate Livres
+        deactivate Livres
+        Map <-- Livres  
+        Map -> Marqueurs : create_markers()
+        activate Marqueurs
+        loop
+            Livres -> Marqueurs : create_marker()
+        end
+        deactivate Marqueurs
+        Map <-- Marqueurs : add_markers()
+    deactivate Map
+    Main  <-- Map : render()
+deactivate Main
+
+@enduml

@@ -1,0 +1,12 @@
+<!DOCTYPE html> 
+<html xlmns:th='http://www.thymeleaf.org'>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <link rel='stylesheet' href="${page_content.title}">
+        <title th:text=${page_content.title}></title>
+    </head>
+    <body>
+        <div th:utext=${page_content.body}></div>            
+    </body>
+</html> 
+

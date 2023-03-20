@@ -1,0 +1,9 @@
+<div th:fragment="copy" class="box">
+    <h2>RECHERCHER UN LIVRE</h2>
+    <div class="bar"></div>
+    <form method="post" th:action="@{/main}" th:object="${livre_search}">
+        <p>Auteur<input type="text" th:field="*{author}"></p>
+        <p>Titre <input type="text" th:field="*{title}"></p>
+        <button type="submit">Envoyer</button>
+    </forms>
+</div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html xlmns:th='http://www.thymeleaf.org'>
+    <head th:replace="page/page-head::copy"></head>
+    <body>
+        <div class="row" id="top">
+            <header th:replace="page/page-header::copy"></header>
+            <nav th:replace="page/page-nav::copy"></nav>
+        </div>
+        <div id="mid">
+
+<!-- Element pour selectionner les livres-->
+<div class="row m-2">
+    <select class="form">
+        <option value="0">Selectionner un livre</option>
+        <option th:each="livre : ${livres}" th:value="${livre.id_book}" th:text="${livre.title}"></option>
+    </select>
+</div>
+
+<!-- Element pour selectionner les livres-->
+<div th:fragment="copy" class="row" style="display: none;">
+    <h2>VILLES DISPONIBLES</h2>
+    <div class="bar"></div>
+    <div class="box-livres" th:each="ville:${villes}">
+        <p class="livre" th:text="${ville.nom}+'|'+${ville.latitude}+'|'+${ville.longitude}"></p>
+    </div>
+</div>
+
+<!--Élément Div pour afficher la carte-->
+<div th:fragment="copy">
+    <div id="map" class="row m-2" style="height:70vh;"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoBbN_BhqAdAJ1T4t3f09861MMwjBbJ6Q&callback=initMap" defer></script>
+    <script>
+        var map;
+        var markers = [];
+
+        // Map functions
+        function create_map(div_name) {
+            var mapProp= {
+                center:new google.maps.LatLng(51.508742,-0.120850),
+                zoom:5,
+            };
+            map = new google.maps.Map(document.getElementById("map"),mapProp);
+            return map;
+        }
+
+        // Marker functions
+        function create_marker(x, y, name, color, map) {
+            var LatLng = {lat: x, lng: y};
+            console.log(color);
+            marker = new google.maps.Marker({
+                position: LatLng,
+                title: name,
+                icon: {url: "http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png"},
+            });
+            marker.setMap(map);
+            marker.setVisible(true);
+            return marker;
+        }
+
+        function initMap() {
+            create_map("map");
+            var marker;	var i=0;
+            var colors = ["blue","red","yellow","orange","green","blue","red","yellow","orange","green"];
+            var livres = $(".livre");
+            livres.each(function() {
+                var ville = this.innerHTML.split("|");
+                ville[1] = parseFloat(ville[1]);
+                ville[2] = parseFloat(ville[2]);
+                console.log(ville)
+                marker = create_marker(ville[1],ville[2],ville[0],"blue",map);
+                //markers[i].push(marker)
+                //i=i+1;
+            })						
+        }
+
+        function toggle_marker(box,i) {
+            if (box.checked) {
+                console.log(markers[i]);
+                for(let j=0; j < markers[i].length; j++) {
+                    markers[i][j].setVisible(true);
+                }
+            } else {
+                for(let j=0; j < markers[i].length; j++) {
+                    markers[i][j].setVisible(false);
+                }
+            }
+        }
+
+    </script>
+</div>
+
+        </div>
+        <div id="bottom">
+            <footer th:replace="page/page-footer::copy"></footer>
+        </div>
+    </body>
+</html> 

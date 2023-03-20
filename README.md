@@ -1,71 +1,78 @@
-# Projet-DevOps
+![Build Status](https://img.shields.io/gitlab/pipeline-status/Roofne/carte-o-culture?branch=main&style=plastic)
+![Coverage Status](https://coveralls.io/repos/gitlab/Roofne/carte-o-culture/badge.svg?branch=main)
+![Licence](https://img.shields.io/gitlab/license/40541214)
+![Release](https://img.shields.io/gitlab/v/release/40541214?date_order_by=created_at&sort=date)
+![Issue](https://img.shields.io/gitlab/issues/open-raw/Roofne/carte-o-culture?gitlab_url=https%3A%2F%2Fgitlab.com)
 
-[![Build Status](https://img.shields.io/travis/com/jylanpayet/Carte-O-Culture/master)](https://travis-ci.com/github/jylanpayet/Carte-O-Culture)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/jylanpayet/Projet-DevOps)
-[![License](https://img.shields.io/github/license/jylanpayet/Projet-DevOps.svg?style=flat-square)](LICENSE)
+<div align="center">
 
-<h3 align="center">Carte'O'Culture - La meilleure plateforme en immersion dans la culture</h3>
+   # Carte-O-Culture
 
-<p align="center">
-    <img src="https://i.ibb.co/FxwtCmk/Capture-d-cran-2022-09-20-20-42-50.png" alt="CarteOCulture" width="200" height="200">
-</p>
+   ![image](https://i.ibb.co/FxwtCmk/Capture-d-cran-2022-09-20-20-42-50.png)
 
-  <p align="center">
-    <a href="Mettre le site ou l'application ici">Voir la démonstration</a>
-    ·
-    <a href="https://github.com/jylanpayet/Carte-O-Culture/issues">Signaler des bugs</a>
-    ·
-    <a href="https://github.com/jylanpayet/Carte-O-Culture/issues">Faire une requête d'amélioration</a>
-  </p>
+   # La meilleure plateforme pour une immersion dans la culture
 
-<details open="open">
-  <summary>Table des matières</summary>
-  <ol>
-    <li>
-      <a href="#projet">À propos du projet</a>
-      <ul>
-        <li><a href="#langages-et-outils">Langages et outils utilisés</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#commencer">Pour commencer</a>
-      <ul>
-        <li><a href="#prerequis">Prérequis</a></li>
-        <li><a href="#demarrage">Démarrage</a></li>
-      </ul>
-    </li>
-    <li><a href="#auteurs">Auteurs</a></li>
-  </ol>
-</details>
-
-## <div id="projet">À propos du projet</div>
-
-Le principe de notre application Carte'O'Culture est de mettre en immersion nos utilisateurs dans les différents lieux et références de leurs œuvres favorites, en particulier notre application pourrait leur proposer un parcours qui retracerait une œuvre.
-
-### <div id="langages-et-outils"><ins>Langages et outils utilisés</ins></div>
-* [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) - Langage de programmation
-* [JUnit 4](https://junit.org/junit4/) - Le framework de test unitaire pour le backend
-
-## <div id="commencer">Pour commencer</div>
-Nous allons vous faire part de toutes les instructions afin d'avoir le projet sur votre machine et d'installer toutes les dépendances nécessaires pour la bonne compilation du projet.
+</div>
 
 
-### <div id="prerequis"><ins>Prérequis</ins>
-Vous aurez besoin d'avoir sur votre machine :
-* [Gradle](https://gradle.org) - Un moteur de production fonctionnant sur la plateforme Java
+## Description
 
-### <div id="demarrage"><ins>Démarrage</ins></div>
+Le principe de notre application Carte'O'Culture est de mettre en immersion nos utilisateurs dans les différents lieux et références de leurs œuvres favorites, 
+en particulier notre application pourrait leur proposer un parcours qui retracerait une œuvre.
 
-gradle
-gradle task bootRun
+## Prerequis
+   ```sh
+   Java 17
+   Maven 5
+   ```
 
-Ouvrir la page http://127.0.0.1:8080/map.html sur votre navigateur
+## Installation
 
-## <div id="auteurs">Auteurs</div>
+1. Cloner le répertoire
+   ```sh
+   git clone https://gitlab.com/Roofne/carte-o-culture.git
+   ```
 
-* **Toine VINTEL** - [@Roofne](https://github.com/Roofne) 
-* **Yohann SIMO** - [@SimoYo](https://github.com/SimoYo)
-* **Lucas HO** - [@HooLucas](https://github.com/HooLucas)
-* **Jylan PAYET** - [@jylanpayet](https://github.com/jylanpayet)
+2. Executer les commandes dans un terminal
+   ```sh
+   mysql -u root -p < ./docs/sql/init.sql
+   mvn clean install
+   mvn spring-boot:run
+   ```
+3. Ouvrir le navigateur à l'adresse 127.0.0.1:8080
+
+## Usage
+
+Une fois la page ouverte, vous pouvez explorer les différents lieux cités dans les oeuvres française.
+
+image.png
+
+Vous pouvez cliquer sur les bouton pour faire appàraitre ou disparaitres les marqueurs de position.
+Chaque marqueurs correspond à une ville cité dans un livre.
+
+## Roadmap
+- [x] Création d'un répertoire de dépot
+- [x] Détection des lieux dans un fichier livre (epub)
+- [x] Création d'une carte intérractive
+- [x] Ajout de nouveaux livres dans le dataset
+- [ ] Affichage des lieux communs entre des livres
+
+Aller à cette [adresse](https://gitlab.com/Roofne/carte-o-culture/-/issues) pour voir toute les issues et les prochaines features.
+
+## Contribution
+
+## Auteurs
+
+* **Toine  VINTEL** - [@Roofne](https://gitlab.com/Roofne) 
+* **Yohann SIMO**   - [@SimoYo](https://github.com/SimoYo)
+* **Lucas  HO**     - [@HooLucas](https://github.com/HooLucas)
+* **Jylan  PAYET**  - [@jylanpayet](https://github.com/jylanpayet)
+
+## Licence
+
+Ce projet est sous une licence GNU Public Licence 3
+
+## Status
 
 Projet réalisé durant les années de Master MIAGE à Paris Nanterre.
+

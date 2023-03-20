@@ -1,0 +1,21 @@
+.square {
+    height: 100px;
+    width: 100px;
+    background-color: #bbb;
+    display: inline-block;
+}
+
+.circle {
+    height: 100px;
+    width: 100px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.circle-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

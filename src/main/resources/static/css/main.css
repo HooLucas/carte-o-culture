@@ -1,0 +1,96 @@
+.box {
+    border: 0px solid black;
+    padding: 1em;
+    margin: 1em;
+}
+
+.box div {
+    margin: 1em;
+}
+
+.box-search {
+    background-color:orangered;
+    z-index: 1;
+    display: block;
+    font-size: medium;
+}
+
+.box-search select {
+    font-size: medium;
+}
+
+.box-info {
+    background-color:green;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-img-top {
+    display: block;
+    margin: auto;
+}
+
+@keyframes dezoom {
+    from {
+        width: 150px;
+        height: 150px;
+    } to {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+#logo {
+    display: flex;
+    justify-content:center;
+    overflow: hidden;
+    vertical-align: middle;
+    height: 15%;
+}
+
+#logo img {
+    animation-name: dezoom;
+    animation-duration: 2s;
+    margin: 5px;
+}
+
+#box-filter {
+    display: flex;
+    justify-content:left;
+    min-height: 50px;
+    max-height: 100px;
+}
+
+#box-filter div {
+    border: 1px solid black;
+    background-color: grey;
+    border-radius: 10px;
+    height: 50px;
+    width: 150px;
+    margin-right: 1em;
+}
+
+
+#box-filter label {
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#box-filter input {
+    margin-left: 1em;
+}
+
+footer {
+    text-align: center;  
+    height: 5%;  
+}
