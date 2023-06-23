@@ -7,7 +7,7 @@ public class TestLivre extends TestCase {
 
     @Test
     public void testCRUD() throws Exception {
-        Livre l1 = new Livre("Germinal","Victor Hugo","unknown.png");
+        Livre l1 = new Livre("Germinal","Victor Hugo","unknown.png","Français");
         assertEquals("Germinal",l1.getTitle());
     }    
 }

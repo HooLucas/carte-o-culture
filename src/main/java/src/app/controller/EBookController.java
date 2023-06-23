@@ -71,8 +71,9 @@ public class EBookController {
             String title  = getTitle(book);
             String author = getAuthor(book); 
             String cover  = getCoverImage(book);
+            String langue= getLanguage(book);
 
-            temp = new Livre(title,author,cover);
+            temp = new Livre(title,author,cover,langue);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -104,7 +105,8 @@ public class EBookController {
         String title  = getTitle(livre);
         String author = getAuthor(livre); 
         String cover  = getCoverImage(livre);
-        Livre book= new Livre(title, author, cover);
+        String langue = getLanguage(livre);
+        Livre book= new Livre(title, author, cover, langue);
 
         List<Chapitre> chapters = getChapters(livre);
         ArrayList<ArrayList<Page>> pages = getPages(livre);
@@ -123,6 +125,10 @@ public class EBookController {
         return book;
     }
 
+    // Recrupere la langue d'un ebook
+    public String getLanguage(Book livre) {
+        return livre.getMetadata().getLanguage();
+    }
     // Recupere le titre d'un ebook
     public String getTitle(Book livre) {
        return livre.getMetadata().getTitles().get(0);

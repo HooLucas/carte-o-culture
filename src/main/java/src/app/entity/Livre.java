@@ -21,7 +21,8 @@ public class Livre implements Serializable {
     public String title;
     public String cover;
     public String author;
-    
+    public String langue;
+
     // Lien avec la table Chapitre
     @OneToMany(
         mappedBy="book", 
@@ -32,11 +33,12 @@ public class Livre implements Serializable {
     // Constructeurs
     public Livre() {}
 
-    public Livre(String _title, String _author, String _cover) {
+    public Livre(String _title, String _author, String _cover,String _langue) {
         this.id_book = null;
         this.title  = _title;
         this.cover  = _cover;
         this.author = _author;
+        this.langue= _langue;
         this.chapters = new ArrayList<Chapitre>();
     }
 
@@ -44,6 +46,7 @@ public class Livre implements Serializable {
     public Integer getid_book() { return id_book; }
     public String  getTitle()   { return title; }
     public String  getCover()   { return cover; }
+    public String  getLangue() { return langue; }
     public String  getAuthor()  { return author; }
     public List<Chapitre> getChapters() { return chapters; }
 
@@ -52,7 +55,7 @@ public class Livre implements Serializable {
     public void setCover(String _cover)   { this.cover = _cover; }
     public void setAuthor(String _author) { this.author = _author; }
     public void setChapters(List<Chapitre> _chapters) { this.chapters = _chapters; }
-
+    public void setLangue(String _langue) {this.langue= _langue;}
     // Méthodes
     public String toString() { return this.title+" | "+this.author; }
 }

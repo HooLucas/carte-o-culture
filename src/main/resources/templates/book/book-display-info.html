@@ -27,6 +27,10 @@
                                 <td><h4 id="auteur" class="box-book-author" th:text="${livre.author}"></h4></td>                
                             </tr>
                             <tr>
+                                <td><h4>langue</h5></td>
+                                <td><h4 id="langue" class="box-book-langue" th:text="${livre.langue}"></h4></td>                
+                            </tr>
+                            <tr>
                                 <td>Editeur</td>
                                 <td>?</td>
                             </tr>
@@ -42,7 +46,7 @@
                     </table>
                 </div>
                 <div class="row">
-                    <a th:href="'/livres/'+${livre.id_book}+'/read'" class="btn btn-primary">READ ME</a>
+                    <a th:href="'/livres/'+${livre.id_book}+'/read'" class="btn btn-primary">LIRE</a>
                 </div>
             </div>
         </div>
