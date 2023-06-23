@@ -116,6 +116,35 @@ public class MainApplication {
 		return "error";
 	}
 
+	// traitement de la requete de supression d'un livre
+	@PostMapping("livres/remove")
+	public String addLivreRequest2(@ModelAttribute Ebook ebook) {
+		try {
+			if(ebook.isEmpty() == false) {
+				System.out.println("Nouveau Livre Détecté");
+				Livre l = ebookAPI.loadDataFromEbook(ebook);
+				//List<String> names = new ArrayList<String>(Arrays.asList(l.getTexte().split(","))); 
+				//System.out.println(this.villeAPI.getFiltered(names));
+				Integer new_id = livreAPI.add(l);
+				Path path1 = Paths.get("./src/main/resources/static/img/cover/temp.jpg");
+				Path path2 = Paths.get("./src/main/resources/static/img/cover/"+new_id+".jpg");
+				if(new_id > 0) {
+					Files.move(path1, path2, REPLACE_EXISTING);
+				} else {
+					Files.delete(path1);
+				}	
+				System.out.println("Nouveau Livre Ajouté");
+				return("redirect:/livres");	
+			} else {
+				System.out.println("Aucun Livre Envoyé");
+				return("redirect:/livres/add"); 		
+			}       
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "error";
+	}
+
 	// Rendement de la page de carte
 	@GetMapping("carte")
 	public String getCarte(Model model) {

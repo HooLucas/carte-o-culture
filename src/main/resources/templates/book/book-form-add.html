@@ -26,6 +26,24 @@
     </div>
 </div>
 
+<div class="box">
+    <div>
+        <div><h2>SUPPRIMER UN LIVRE</h2></div>
+        <div class="bar"></div>
+        <div>
+        <form method="post" th:action="@{/livres/remove}" enctype="multipart/form-data">
+            <div class="form-group">
+                <h5>Ebook File</h5>
+                <input type="file" class="form-control" id="input-file" th:field="${ebook.file}">
+            </div>
+            <div>
+                <button>Envoyer</button>
+            </div>
+        </forms>
+        </div>
+    </div>
+</div>
+
     </div>
     <div id="bottom">
         <footer th:replace="page/page-footer::copy"></footer>
